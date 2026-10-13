@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  api-proxy:
+    # 這裡的 . 代表 Dockerfile 就位於目前 docker-compose.yml 所在的同一個目錄
+    build: .
+    container_name: api-proxy
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      # 🎯 目標上游 API 端點：請填寫你實際的端點（例如 https://your-api-domain.com 或容器內網 http://newapi:3000）
+      - TARGET_URL=https://your-api-endpoint.com
+      # 🔒 域名白名單限制：留空表示不限制（允許內網 IP、localhost 或任意域名存取）
+      - ALLOWED_DOMAIN=
+      # 🔧 模型別名 (可選，例如: gpt-4o:claude-3-5-sonnet:high)
+      - MODEL_ALIASES=
+      # 🕵️ 詳細除錯日誌
+      - DEBUG_LOG=false
+      # 🛠️ 特殊欄位控制開關 (預設值)
+      - ENABLE_TOOLS=true
+      - ENABLE_PROMPT_CACHE_OPTIONS=false
+      - ENABLE_TRUNCATION=false
+      - ENABLE_TOP_LEVEL_REASONING_EFFORT=false
+      - ENABLE_TOP_P=false
+
+# 若後續要與 NewAPI 容器走 Docker 內網通訊，可取消下方程式碼的註解並加入現有網路：
+# networks:
+#   default:
+#     name: your_newapi_network
+#     external: true

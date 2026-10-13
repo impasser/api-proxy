@@ -89,7 +89,6 @@ app.get('/', (req, res) => {
                 <div style="text-align: center; padding: 40px; background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                     <h1 style="color: #ea4c89;">✅ API Proxy is Running</h1>
                     <p style="color: #666;">伺服器運作正常 (Zero-Latency SSE 管線模式)。</p>
-                    <p style="color: #999; font-size: 13px;">Target: ${TARGET_URL}</p>
                 </div>
             </body>
         </html>

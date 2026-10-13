@@ -12,7 +12,7 @@ services:
       # 🎯 目標上游端點：在同一 vnet 下，可直接填 newapi 的容器名稱 (例如 http://newapi:3000)
       - TARGET_URL=${TARGET_URL:-http://new-api:3000}
       - ALLOWED_DOMAIN=
-      - MODEL_ALIASES=
+      - MODEL_ALIASES=${MODEL_ALIASES:-}
       - DEBUG_LOG=false
       - ENABLE_TOOLS=true
       - ENABLE_PROMPT_CACHE_OPTIONS=false

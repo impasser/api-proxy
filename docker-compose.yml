@@ -10,7 +10,7 @@ services:
     environment:
       - PORT=8080
       # 🎯 目標上游端點：在同一 vnet 下，可直接填 newapi 的容器名稱 (例如 http://newapi:3000)
-      - TARGET_URL=https://your-api-endpoint.com
+      - TARGET_URL=${TARGET_URL:-http://new-api:3000}
       - ALLOWED_DOMAIN=
       - MODEL_ALIASES=
       - DEBUG_LOG=false
